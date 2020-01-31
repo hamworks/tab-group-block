@@ -5,7 +5,12 @@ import edit from './edit';
 import save from './save';
 
 registerBlockType<BlockAttributes>( 'tab-group-block/panel', {
-	attributes: {},
+	attributes: {
+		label: {
+			type: 'string',
+			default: 'tab',
+		},
+	},
 	parent: [ 'tab-group-block/group' ],
 	title: __( 'Tab Panel', 'tab-group-block' ),
 	icon: 'calendar',
@@ -14,6 +19,7 @@ registerBlockType<BlockAttributes>( 'tab-group-block/panel', {
 		inserter: false,
 		reusable: false,
 		html: false,
+		anchor: true,
 	},
 	edit,
 	save,
