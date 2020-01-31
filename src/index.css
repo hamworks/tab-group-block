@@ -1,7 +1,7 @@
 .tab-group-block .tab-group-block__tabs {
 	display: flex;
 	width: 100%;
-	box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+	box-shadow: 0 2px 1px -1px rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 3px 0 rgba(0,0,0,0.12);
 	background-color: #fff;
 	padding: 0;
 	margin: 0;
@@ -13,9 +13,11 @@
 	padding: 0.5em 1em;
 	flex-grow: 1;
 	text-align: center;
+	border: 2px solid transparent;
+	text-decoration: none;
 }
 
 .tab-group-block .tab-group-block__tab.tab-group-block__tab--selected {
-	border-bottom: 3px solid #ccc;
+	border-bottom-color: #ccc;
 }
 

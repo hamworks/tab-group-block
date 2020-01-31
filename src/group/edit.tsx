@@ -4,12 +4,18 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { BlockAttributes } from './block';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Button, ButtonGroup } from '@wordpress/components';
-import { get, last } from 'lodash';
+import { get, isEqual, last } from 'lodash';
 
 const PANEL = 'tab-group-block/panel';
 
 const Edit: React.FC<BlockEditProps<BlockAttributes>> = ( { attributes, setAttributes, clientId } ) => {
 	const innerBlocks = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ) );
+	const tabs = innerBlocks.map( ( { attributes: { label, anchor } } ) => ( { label, anchor } ) );
+	//todo fix me.
+	if ( ! isEqual( attributes.tabs, tabs ) ) {
+		setAttributes( { tabs } );
+	}
+
 	const selectedBlockClientId = useSelect( ( select ) => select( 'core/block-editor' ).getSelectedBlockClientId() );
 	const { replaceInnerBlocks, removeBlock, selectBlock } = useDispatch( 'core/block-editor' );
 	return (
@@ -22,7 +28,10 @@ const Edit: React.FC<BlockEditProps<BlockAttributes>> = ( { attributes, setAttri
 								href={ innerBlock.attributes.anchor }
 								className={ `tab-group-block__tab ${ selectedBlockClientId === innerBlock.clientId ? 'tab-group-block__tab--selected' : '' }` }
 								key={ i }
-								onClick={ () => selectBlock( innerBlock.clientId ) }
+								onClick={ ( e ): void => {
+									e.preventDefault();
+									selectBlock( innerBlock.clientId );
+								} }
 							>
 								{ innerBlock.attributes.label }
 							</a>
@@ -38,7 +47,10 @@ const Edit: React.FC<BlockEditProps<BlockAttributes>> = ( { attributes, setAttri
 
 			<ButtonGroup>
 				<Button isDefault onClick={ (): void => {
-					replaceInnerBlocks( clientId, [ ...innerBlocks, createBlock( PANEL ) ] );
+					replaceInnerBlocks( clientId, [ ...innerBlocks, createBlock( PANEL, {
+						label: 'Tab',
+						anchor: 'tab',
+					} ) ] );
 				} }>Add Tab</Button>
 				{
 					innerBlocks.length > 1 ?
