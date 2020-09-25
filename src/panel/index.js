@@ -1,10 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { BlockAttributes } from './block';
 import edit from './edit';
 import save from './save';
 
-registerBlockType<BlockAttributes>( 'tab-group-block/panel', {
+registerBlockType( 'tab-group-block/panel', {
 	attributes: {
 		label: {
 			type: 'string',

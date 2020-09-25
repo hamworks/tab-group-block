@@ -1,0 +1,29 @@
+{
+    "name": "tab-group-block/group",
+    "title": "tab",
+    "icon": "tag",
+    "description": "tab",
+    "textdomain": "tab-group-block",
+    "attributes": {
+        "tabs": {
+            "type": "array",
+            "source": "query",
+            "selector": ".tab-group-block__tab",
+            "query": {
+                "label": {
+                    "type": "string",
+                    "source": "html"
+                },
+                "anchor": {
+                    "type": "string",
+                    "source": "attribute",
+                    "attribute": "data-target"
+                }
+            },
+            "default": []
+        }
+    },
+    "category": "layout",
+    "editorScript": "file:../..//build/index.js",
+    "editorStyle": "file:../..//build/index.css"
+}

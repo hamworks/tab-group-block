@@ -11,29 +11,14 @@
  * @package         Tab_Group_Block
  */
 
-namespace  HAMWORKS\Tab_Group_Block;
+namespace HAMWORKS\Tab_Group_Block;
 
 defined( 'ABSPATH' ) || exit;
 
 function init() {
-	$asset_file = include( dirname( __FILE__ ) . '/build/index.asset.php' );
-	wp_register_script(
-		'tab-group-block',
-		plugins_url( 'build/index.js', __FILE__ ),
-		$asset_file['dependencies'],
-		$asset_file['version']
-	);
-	wp_register_style( 'tab-group-block', plugins_url( 'build/index.css', __FILE__ ) );
-	register_block_type( 'tab-group-block/group', array(
-		'editor_script' => 'tab-group-block',
-		'editor_style'  => 'tab-group-block',
-		'style'  => 'tab-group-block',
-	) );
-	register_block_type( 'tab-group-block/panel', array(
-		'editor_script' => 'tab-group-block',
-		'editor_style'  => 'tab-group-block',
-		'style'  => 'tab-group-block',
-	) );
+	register_block_type_from_metadata( __DIR__ . '/src/group/block.json' );
+	register_block_type_from_metadata( __DIR__ . '/src/panel/block.json' );
+
 }
 
 add_action( 'init', function () {

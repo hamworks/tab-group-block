@@ -1,0 +1,17 @@
+{
+    "name": "tab-group-block/panel",
+    "title": "Tab contents",
+    "icon": "tag",
+    "description": "tab",
+    "parent": [
+        "tab-group-block/group"
+    ],
+    "textdomain": "tab-group-block",
+    "attributes": {
+        "label": {
+            "type": "string",
+            "default": "tab"
+        }
+    },
+    "category": "layout"
+}

@@ -1,23 +1,23 @@
 .tab-group-block .tab-group-block__tabs {
 	display: flex;
 	width: 100%;
-	box-shadow: 0 2px 1px -1px rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 3px 0 rgba(0,0,0,0.12);
-	background-color: #fff;
 	padding: 0;
 	margin: 0;
-	justify-content: center;
+	justify-content: left;
 }
 
 .tab-group-block .tab-group-block__tab {
 	display: block;
-	padding: 0.5em 1em;
-	flex-grow: 1;
+	padding: 0.25em .5em;
+	flex-grow: 0;
+	border-radius: .25em .25em 0 0;
+	border: 1px solid transparent;
+	border-bottom: none;
 	text-align: center;
-	border: 2px solid transparent;
 	text-decoration: none;
 }
 
 .tab-group-block .tab-group-block__tab.tab-group-block__tab--selected {
-	border-bottom-color: #ccc;
+	border-color: currentColor;
 }
 

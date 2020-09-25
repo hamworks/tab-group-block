@@ -1,9 +1,6 @@
-import * as React from 'react';
-import { BlockSaveProps } from '@wordpress/blocks';
-import { BlockAttributes } from './block';
 import { InnerBlocks } from '@wordpress/block-editor';
 
-const Save: React.FC<BlockSaveProps<BlockAttributes>> = ( { attributes } ) => {
+const Save = ( { attributes } ) => {
 	return (
 		<div>
 			<nav>
@@ -11,6 +8,7 @@ const Save: React.FC<BlockSaveProps<BlockAttributes>> = ( { attributes } ) => {
 					{ attributes.tabs.map( ( { label, anchor }, i ) => (
 						<a
 							href={ `#${ anchor }` }
+							data-target={ `${ anchor }` }
 							className={ `tab-group-block__tab` }
 							key={ i }
 						>
@@ -19,10 +17,11 @@ const Save: React.FC<BlockSaveProps<BlockAttributes>> = ( { attributes } ) => {
 					) ) }
 				</div>
 			</nav>
-			<InnerBlocks.Content />
+			<div className="tab-group-block__contents">
+				<InnerBlocks.Content />
+			</div>
 		</div>
 	);
 };
 
 export default Save;
-
