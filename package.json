@@ -21,7 +21,7 @@
     },
     "devDependencies": {
         "@wordpress/browserslist-config": "2.7.0",
-        "@wordpress/scripts": "^12.2.1",
+        "@wordpress/scripts": "^12.6.1",
         "prettier": "npm:wp-prettier@^2",
         "cssnano": "^4.1.10",
         "postcss-import": "^12.0.1",
